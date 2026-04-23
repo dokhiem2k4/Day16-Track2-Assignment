@@ -29,19 +29,19 @@ variable "model_id" {
 }
 
 variable "machine_type" {
-  description = "GCE Machine Type for the GPU node"
+  description = "GCE Machine Type for the compute node"
   type        = string
-  default     = "n1-standard-4"
+  default     = "n2-standard-8"  # CPU fallback: 8 vCPU, 32 GB RAM
 }
 
 variable "gpu_type" {
-  description = "GPU accelerator type"
+  description = "GPU accelerator type (unused in CPU fallback)"
   type        = string
   default     = "nvidia-tesla-t4"
 }
 
 variable "gpu_count" {
-  description = "Number of GPUs to attach"
+  description = "Number of GPUs to attach (0 = CPU only)"
   type        = number
-  default     = 1
+  default     = 0
 }
